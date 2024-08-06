@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e8a898ac-d66f-400c-8264-44474198111d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
+    <PackageReference Include="Carter" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoneyBase.SupportSync.ChatWindowService.Application\MoneyBase.SupportSync.ChatWindowService.Application.csproj" />
+    <ProjectReference Include="..\MoneyBase.SupportSync.ChatWindowService.Infrastructure\MoneyBase.SupportSync.ChatWindowService.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

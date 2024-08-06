@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option csharp_namespace = "MoneyBase.SupportSync.ChatApi.Grpc";
+
+service SessionService {
+    rpc CreateSession (CreateSessionRequest) returns (CreateSessionResponse);
+    rpc GetSessionStatus (GetSessionStatusRequest) returns (GetSessionStatusResponse);
+    rpc UpdateSession (UpdateSessionRequest) returns (UpdateSessionResponse);
+    rpc PollSession (PollSessionRequest) returns (PollSessionResponse);
+    rpc EndSession (EndSessionRequest) returns (EndSessionResponse);
+}
+
+message CreateSessionRequest {
+    string user_id = 1;
+    string initial_message = 2;
+}
+
+message CreateSessionResponse {
+    string session_id = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+message GetSessionStatusRequest {
+    string session_id = 1;
+}
+
+message GetSessionStatusResponse {
+    string session_id = 1;
+    string status = 2;
+    repeated string messages = 3;
+}
+
+message UpdateSessionRequest {
+    string session_id = 1;
+    string new_status = 2;
+}
+
+message UpdateSessionResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message PollSessionRequest {
+    string session_id = 1;
+}
+
+message PollSessionResponse {
+    string session_id = 1;
+    string status = 2;
+    repeated string messages = 3;
+}
+
+message EndSessionRequest {
+    string session_id = 1;
+}
+
+message EndSessionResponse {
+    bool success = 1;
+    string message = 2;
+}

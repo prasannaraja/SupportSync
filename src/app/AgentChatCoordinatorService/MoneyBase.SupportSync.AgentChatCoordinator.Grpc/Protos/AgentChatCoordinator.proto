@@ -1,0 +1,64 @@
+
+syntax = "proto3";
+
+option csharp_namespace = "MoneyBase.SupportSync.AgentChatCoordinator.Grpc.Protos";
+
+service AgentChatCoordinatorService {
+    rpc AssignSession (AssignSessionRequest) returns (AssignSessionResponse);
+    rpc GetAgentStatus (GetAgentStatusRequest) returns (GetAgentStatusResponse);
+    rpc UpdateAgentStatus (UpdateAgentStatusRequest) returns (UpdateAgentStatusResponse);
+    rpc GetAllAgentsStatus (GetAllAgentsStatusRequest) returns (GetAllAgentsStatusResponse);
+    rpc AgentCompletedSession (AgentCompletedSessionRequest) returns (AgentCompletedSessionResponse);
+}
+
+message AssignSessionRequest {
+    string session_id = 1;
+}
+
+message AssignSessionResponse {
+    string agent_id = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+message GetAgentStatusRequest {
+    string agent_id = 1;
+}
+
+message GetAgentStatusResponse {
+    string agent_id = 1;
+    string status = 2;
+    int32 current_sessions = 3;
+}
+
+message UpdateAgentStatusRequest {
+    string agent_id = 1;
+    string new_status = 2;
+}
+
+message UpdateAgentStatusResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetAllAgentsStatusRequest {}
+
+message GetAllAgentsStatusResponse {
+    repeated AgentStatus agents = 1;
+}
+
+message AgentStatus {
+    string agent_id = 1;
+    string status = 2;
+    int32 current_sessions = 3;
+}
+
+message AgentCompletedSessionRequest {
+    string agent_id = 1;
+    string session_id = 2;
+}
+
+message AgentCompletedSessionResponse {
+    bool success = 1;
+    string message = 2;
+}

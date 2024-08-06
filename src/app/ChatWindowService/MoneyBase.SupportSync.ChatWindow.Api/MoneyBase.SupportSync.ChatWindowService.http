@@ -1,0 +1,6 @@
+@MoneyBase.SupportSync.ChatWindowService_HostAddress = http://localhost:5051
+
+GET {{MoneyBase.SupportSync.ChatWindowService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

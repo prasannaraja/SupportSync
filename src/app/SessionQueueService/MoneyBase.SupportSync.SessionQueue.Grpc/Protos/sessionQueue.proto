@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option csharp_namespace = "MoneyBase.SupportSync.SessionQueue.Grpc";
+
+service SessionQueueService {
+    rpc EnqueueSession (EnqueueSessionRequest) returns (EnqueueSessionResponse);
+    rpc DequeueSession (DequeueSessionRequest) returns (DequeueSessionResponse);
+    rpc GetQueueStatus (GetQueueStatusRequest) returns (GetQueueStatusResponse);
+    rpc MarkSessionInactive (MarkSessionInactiveRequest) returns (MarkSessionInactiveResponse);
+    rpc GetSessionDetails (GetSessionDetailsRequest) returns (GetSessionDetailsResponse);
+}
+
+message EnqueueSessionRequest {
+    string session_id = 1;
+    string user_id = 2;
+    string initial_message = 3;
+}
+
+message EnqueueSessionResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message DequeueSessionRequest {
+    string agent_id = 1;
+}
+
+message DequeueSessionResponse {
+    string session_id = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+message GetQueueStatusRequest {}
+
+message GetQueueStatusResponse {
+    int32 total_sessions = 1;
+    int32 active_sessions = 2;
+    int32 waiting_sessions = 3;
+}
+
+message MarkSessionInactiveRequest {
+    string session_id = 1;
+}
+
+message MarkSessionInactiveResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetSessionDetailsRequest {
+    string session_id = 1;
+}
+
+message GetSessionDetailsResponse {
+    string session_id = 1;
+    string user_id = 2;
+    string status = 3;
+    repeated string messages = 4;
+}
+
