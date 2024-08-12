@@ -1,0 +1,56 @@
+{
+  "Routes": [
+    {
+      "SwaggerKey": "ChatWindowApi",
+      "DownstreamPathTemplate": "/ChatWindowApi/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5051
+        }
+      ],
+      "DownstreamHttpMethod": null,
+      "DownstreamHttpVersion": null,
+      "UpstreamPathTemplate": "/ChatWindowApi/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "OPTIONS" ]
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "ChatWindowApi",
+      "VersionPlaceholder": "{version}",
+      "KeyToPath": "ChatWindowApi",
+      "Config": [
+        {
+          "Name": "ChatWindowApi API",
+          "Version": "v1",
+          "Url": "http://localhost:5051/swagger/v1/swagger.json"
+        }
+      ],
+      "HostOverride": null,
+      "TransformByOcelotConfig": false,
+      "RemoveUnusedComponentsFromScheme": true,
+      "TakeServersFromDownstreamService": false
+    },
+    {
+      "Key": "MonitoringApi",
+      "VersionPlaceholder": "{version}",
+      "KeyToPath": "MonitoringApi",
+      "Config": [
+        {
+          "Name": "MonitoringApi API",
+          "Version": "v1",
+          "Url": "http://localhost:5146/swagger/v1/swagger.json"
+        }
+      ],
+      "HostOverride": null,
+      "TransformByOcelotConfig": false,
+      "RemoveUnusedComponentsFromScheme": true,
+      "TakeServersFromDownstreamService": false
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:53016"
+  }
+}

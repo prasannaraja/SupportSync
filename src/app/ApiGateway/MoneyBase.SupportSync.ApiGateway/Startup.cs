@@ -28,16 +28,15 @@ namespace MoneyBase.SupportSync.ApiGateway
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UsePathBase("/gateway");
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
-            app.UseStaticFiles();
+            
             app.UseSwaggerForOcelotUI(opt =>
             {
-                opt.DownstreamSwaggerEndPointBasePath = "/gateway/swagger/docs";
-                opt.PathToSwaggerGenerator = "/swagger/docs";
+                if (!env.IsDevelopment())
+                    opt.DownstreamSwaggerEndPointBasePath = "/MoneyBase.SupportSync.ApiGateway/swagger/docs";
+                else
+                    opt.PathToSwaggerGenerator = "/swagger/docs";
             })
             .UseOcelot()
             .Wait();
